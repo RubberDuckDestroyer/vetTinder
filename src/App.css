@@ -41,3 +41,19 @@
   color:darkturquoise;
   font-style: italic;
 }
+.rightBut {
+  text-align: left;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+.media {
+  width: 250px;
+  height: 250px;
+}
+.vetClinic {
+  
+}
