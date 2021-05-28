@@ -11,7 +11,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import profileData from "./data/profiles.json"
 import vetData from "./data/vets.json"
-import * from "react-google-maps"
+/*import * from "react-google-maps"*/
 
 function App() {
   const [currentCardIndex, setCardIndex] = React.useState(0);
@@ -64,15 +64,15 @@ function App() {
             subheader="[add sth here]"
           />
           <div className="media-frame">
-          {/* <CardMedia 
+         <CardMedia 
             className="media"
             image={vet.profile}
             title= "Vet example"
-            /> */}
+            /> 
             
-            <GoogleMap
+            {/*<GoogleMap
             defaultZoom={8}
-            defaultCenter={{ lat: -34.397, lng: 150.644 }}/>
+            defaultCenter={{ lat: -34.397, lng: 150.644 }}/>*/}
               
           </div>
           <CardContent className="place"> 
