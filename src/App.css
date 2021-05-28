@@ -1,3 +1,5 @@
+/* div {border: 1px solid black;} */
+
 .App {
   text-align: center;
 }
@@ -28,6 +30,15 @@
   color: #61dafb;
 }
 
+.location-filter {
+  color: white;
+  padding-top: 50px;
+}
+
+.textfield{
+  background-color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -38,22 +49,63 @@
 }
 
 .textSecondary {
-  color:darkturquoise;
+  color:white;
   font-style: italic;
 }
-.rightBut {
-  text-align: left;
-}
+
 
 .actions {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+}
+
+.vet-card{
+  padding-top: 30px;
+}
+
+.vet-clinic {
+  display:flex;
+  flex-flow: column;  
+}
+
+.vet-clinic , .media *, .place  {
+  background-color: #47bfaf;
+}
+
+.icon {
+  background-color: white;
+}
+
+.media-frame {
+  background-color: #47bfaf;
 }
 
 .media {
-  width: 250px;
-  height: 250px;
+  margin: auto;
+  width: 300px;
+  height: 300px;
+  border-radius: 230px;
+  background-color: #47bfaf;
+  border: 1px solid black;
+  box-shadow: 2px 2px 4px black;
 }
-.vetClinic {
-  
+body {
+  width: 80vh;
+  margin: auto;
+  height: 100vh;
+  background-color: #031e45;
 }
+
+
+@media (max-width: 900px){
+
+  body {
+    width: 80vh;
+  }
+  .actions {
+    flex-direction: column;
+  }
+
+}
+
+

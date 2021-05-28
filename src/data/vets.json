@@ -6,7 +6,8 @@
         "location": {
             "lat": -36.9107212,
             "lng": 174.7689044
-        }
+        },
+        "profile": "img/vet-dog.jpg"
     },
     {
         "name": "Veterinary Specialist Group",
@@ -15,7 +16,8 @@
         "location": {
             "lat": -36.8769998,
             "lng": 174.7102575
-        }
+        },
+        "profile": "img/vet-dog2.jpg"
     },
     {
         "name": "Western Veterinary",
