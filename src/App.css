@@ -59,9 +59,7 @@
   justify-content: space-around;
 }
 
-.vet-card{
-  padding-top: 30px;
-}
+
 
 .vet-clinic {
   display:flex;
@@ -108,4 +106,7 @@ body {
 
 }
 
+.vet-card{
+  padding-top: 30px;
+}
 

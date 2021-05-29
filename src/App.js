@@ -10,13 +10,33 @@ import CancelIcon from '@material-ui/icons/Cancel';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import profileData from "./data/profiles.json"
-import vetData from "./data/vets.json"
-/*import * from "react-google-maps"*/
+import vetData from "./data/vets.json";
+import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 
 function App() {
   const [currentCardIndex, setCardIndex] = React.useState(0);
 
   const [location, setLocation] = React.useState('');
+
+  const getProfiles = (place_id) => {
+    const res =  profileData.filter((user) => {
+      return (user.works_at == place_id && user.name.first.includes("?") == false)
+    })
+
+    console.log(res)
+    return res
+  }
+  
+  const MapWithMarker = withScriptjs(withGoogleMap(props => 
+    <GoogleMap
+      defaultZoom={15}
+      defaultCenter={{ lat: props.location.lat, lng: props.location.lng }}
+      >
+      <Marker
+        position={{ lat: props.location.lat, lng: props.location.lng }}
+      />
+    </GoogleMap>
+    ));
 
 
   const updateLocation = (event) => {
@@ -64,15 +84,20 @@ function App() {
             subheader="[add sth here]"
           />
           <div className="media-frame">
-         <CardMedia 
-            className="media"
-            image={vet.profile}
-            title= "Vet example"
-            /> 
+              {/* <CardMedia 
+                className="media"
+                image={vet.profile}
+                title= "Vet example"
+              />  */}
+
+              <MapWithMarker
+                googleMapURL="https://maps.googleapis.com/maps/api/js?key=AIzaSyA8CrNW7VK1qGRvrmJ0WiUx2ntC1n7M4XA&v=3.exp&libraries=geometry,drawing,places"
+                loadingElement={<div style={{ height: `100%` }} />}
+                containerElement={<div style={{ height: `400px` }} />}
+                mapElement={<div style={{ height: `100%` }} />}
+                location={vet.location}
+              />  
             
-            {/*<GoogleMap
-            defaultZoom={8}
-            defaultCenter={{ lat: -34.397, lng: 150.644 }}/>*/}
               
           </div>
           <CardContent className="place"> 
@@ -106,7 +131,7 @@ function App() {
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
               <List>
-                {profileData.map((profile,key) => (
+                {getProfiles(vet.place_id).map((profile,key) => (
                   
                 <ListItem component="nav" className="vet-table" aria-label="Vet profile">
                     {profile.name.first}
