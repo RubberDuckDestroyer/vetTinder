@@ -14,10 +14,13 @@ import vetData from "./data/vets.json";
 import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps";
 
 function App() {
+
+  // variable declaration
   const [currentCardIndex, setCardIndex] = React.useState(0);
   const [location, setLocation] = React.useState('');
   const [expanded,setExpanded] = React.useState(false);
 
+  // variables for retrieving the vet profile for particular locations
   const getProfiles = (place_id) => {
     const res =  profileData.filter((user) => {
       return (user.works_at == place_id && user.name.first.includes("?") == false)
@@ -25,6 +28,7 @@ function App() {
     return res
   }
   
+  // Google maps API synced to location of vet clinics
   const MapWithMarker = withScriptjs(withGoogleMap(props => 
     <GoogleMap
       defaultZoom={15}
@@ -36,6 +40,7 @@ function App() {
     </GoogleMap>
   ));
 
+  // ------ Handlers ----
   const updateLocation = (event) => {
     setLocation(event.target.value)
   }
@@ -44,12 +49,15 @@ function App() {
     setExpanded(!expanded);
   };
 
+  // OnClick handler --> Iterate through array and go to next vet clinic
   const handleClickNo = () => {
       if (currentCardIndex == vetData.length - 1) {
         setCardIndex(0)
       }    else { setCardIndex(currentCardIndex+1);}    
   }
 
+
+  // Front-end HTML content
   return (
     <div className="App">
       
@@ -68,6 +76,9 @@ function App() {
             title = {vet.name}
           />
           <div className="media-frame">
+
+            {/* HTML code to display and style images if used instead of google maps */}
+
             {/* To show images, uncomment */}
               {/* <CardMedia 
                 className="media"
@@ -85,6 +96,8 @@ function App() {
             
               
           </div>
+
+          {/* Card content */}
           <CardContent className="place"> 
             <Typography className="textSecondary" component="p">
               Clinic location
@@ -93,29 +106,38 @@ function App() {
             <Typography component="p" className="vet-local" aria-label="Clinic profile">
                     {vet.vicinity}
                 </Typography>
-                
-            
           </CardContent>
+
+          {/* Icons */}
           <div className="icon">
           <CardActions disableSpacing className="actions">
+
+            {/* No Button */}
             <IconButton className="no" aria-label="No" onClick={handleClickNo}>
               <CancelIcon/>
             </IconButton>
+
+            {/* More / Expand button */}
             <IconButton classNames="more"
             onClick={handleExpandClick}
             aria-expanded={expanded}
             aria-label="Yes, show vets"
             >
-              <ExpandMoreIcon />
             </IconButton>
+
+
+              {/* Expand / Like Button */}
             <IconButton className="yes" aria-label="Yes">
               <FavoriteIcon/>
             </IconButton> 
             </CardActions>
             
+            {/* Handle the expanded contant to show vets associated with specific location */}
             <Collapse in={expanded} timeout="auto" unmountOnExit>
               <CardContent>
               <List>
+
+                {/* List vets and associated emails */}
                 {getProfiles(vet.place_id).map((profile,key) => (
                   
                 <ListItem component="nav" className="vet-table" aria-label="Vet profile" >
@@ -125,6 +147,7 @@ function App() {
                   </div>
                 </ListItem>
                 ))} 
+
               </List>
                 
               </CardContent>

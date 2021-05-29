@@ -1,4 +1,10 @@
-/* div {border: 1px solid black;} */
+
+body {
+  width: 80vh;
+  margin: auto;
+  height: 100vh;
+  background-color: #031e45;
+}
 
 .App {
   text-align: center;
@@ -8,6 +14,7 @@
   height: 40vmin;
   pointer-events: none;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
@@ -35,29 +42,11 @@
   padding-top: 50px;
 }
 
+/* Style for textfield */
 .textfield{
   background-color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.textSecondary {
-  color:white;
-  font-style: italic;
-}
-
-
-.actions {
-  display: flex;
-  justify-content: space-around;
-}
 
 
 
@@ -66,18 +55,31 @@
   flex-flow: column;  
 }
 
+
+/* Apply colouring to all divs except footer */
 .vet-clinic , .media *, .place  {
   background-color: #47bfaf;
 }
 
-.icon {
-  background-color: white;
+
+/* Clinic location text */
+.textSecondary {
+  color:white;
+  font-style: italic;
+}
+
+/* icons */
+.actions {
+  display: flex;
+  justify-content: space-around;
 }
 
 .media-frame {
   background-color: #47bfaf;
 }
 
+
+/* Styling for images */
 .media {
   margin: auto;
   width: 300px;
@@ -87,15 +89,12 @@
   border: 1px solid black;
   box-shadow: 2px 2px 4px black;
 }
-body {
-  width: 80vh;
-  margin: auto;
-  height: 100vh;
-  background-color: #031e45;
-}
 
 
+
+/* Responsive web design - Adapt to mobile screens under 900px */
 @media (max-width: 900px){
+
 
   body {
     width: 80vh;
@@ -120,6 +119,7 @@ body {
   font-weight: bold;
 }
 
+/* Flex icons in a column */
 .listItem {
   display: flex;
   flex-direction: column;
