@@ -110,3 +110,19 @@ body {
   padding-top: 30px;
 }
 
+.listName {
+  text-align: left;
+  font-weight: bold;
+}
+
+.listEmail {
+  text-align: center;
+  font-weight: bold;
+}
+
+.listItem {
+  display: flex;
+  flex-direction: column;
+  padding: 5px;
+  justify-content: space-between;
+}

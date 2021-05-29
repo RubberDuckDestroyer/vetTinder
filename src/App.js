@@ -15,15 +15,13 @@ import {withScriptjs, withGoogleMap, GoogleMap, Marker} from "react-google-maps"
 
 function App() {
   const [currentCardIndex, setCardIndex] = React.useState(0);
-
   const [location, setLocation] = React.useState('');
+  const [expanded,setExpanded] = React.useState(false);
 
   const getProfiles = (place_id) => {
     const res =  profileData.filter((user) => {
       return (user.works_at == place_id && user.name.first.includes("?") == false)
     })
-
-    console.log(res)
     return res
   }
   
@@ -36,34 +34,21 @@ function App() {
         position={{ lat: props.location.lat, lng: props.location.lng }}
       />
     </GoogleMap>
-    ));
-
+  ));
 
   const updateLocation = (event) => {
     setLocation(event.target.value)
   }
-  
-  const [expanded,setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
   const handleClickNo = () => {
-
-    vetData.forEach( (vet) => {
-      vet.image = "img/vet-dog.jpg";
-    })
-
       if (currentCardIndex == vetData.length - 1) {
-        alert("No more card")
         setCardIndex(0)
       }    else { setCardIndex(currentCardIndex+1);}    
   }
-
-  // const profileData = import('');
-  // const vetProfile = JSON.parse(profileData);
-
 
   return (
     <div className="App">
@@ -81,9 +66,9 @@ function App() {
           <CardHeader 
           className="vet-clinic"
             title = {vet.name}
-            subheader="[add sth here]"
           />
           <div className="media-frame">
+            {/* To show images, uncomment */}
               {/* <CardMedia 
                 className="media"
                 image={vet.profile}
@@ -133,10 +118,12 @@ function App() {
               <List>
                 {getProfiles(vet.place_id).map((profile,key) => (
                   
-                <ListItem component="nav" className="vet-table" aria-label="Vet profile">
-                    {profile.name.first}
-                    
-                  </ListItem>
+                <ListItem component="nav" className="vet-table" aria-label="Vet profile" >
+                  <div class="listItem">
+                    <div>{profile.name.first} </div>
+                    <div> Email: {profile.email}</div>
+                  </div>
+                </ListItem>
                 ))} 
               </List>
                 
